@@ -9,8 +9,8 @@ const Signup = () => {
 
   return (
     <div className="sign-up-page">
-      <div className="sign-up-container">
-        <h1 className="sign-up-header">
+      <div className="input-wrapper">
+        <h1 className="header-div">
           {
             flag ? "Sign Up" : "Log In"
           }
@@ -18,7 +18,7 @@ const Signup = () => {
         {
           flag? <SignUpForm /> : <LogInForm />
         }
-        <h4 className="sign-up-footer">
+        <h4 className="footer-div">
           {
             flag? "Already have an account? " : "Don't have an account? "
           }

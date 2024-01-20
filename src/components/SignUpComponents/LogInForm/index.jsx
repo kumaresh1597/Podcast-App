@@ -3,12 +3,8 @@ import InputComponent from '../../common/Input';
 import Button from '../../common/Button';
 import "./style.css";
 
-import {db,auth,storage} from "../../../firebase";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-} from "firebase/auth";
+import {db,auth} from "../../../firebase";
+import {signInWithEmailAndPassword } from "firebase/auth";
 
 import { getDoc,doc } from 'firebase/firestore';
 import { useDispatch } from 'react-redux';
@@ -46,6 +42,7 @@ const LogInForm = () => {
             dispatch(setUser({
               name : userDetail.name,
               email : user.email,
+              profilePic : userDetail.profilePic,
               uid : user.uid
           }));
           toast.success("Log in successfull");

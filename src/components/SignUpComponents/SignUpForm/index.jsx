@@ -1,14 +1,12 @@
 import React,{useState} from 'react';
 import InputComponent from '../../common/Input';
 import Button from '../../common/Button';
+import FileInput from '../../common/Input/FileInput';
 import "./style.css";
 
-import {db,auth,storage} from "../../../firebase";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-} from "firebase/auth";
+import {db,auth,storage } from "../../../firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 
 import { setDoc,doc } from 'firebase/firestore';
 import { useDispatch } from 'react-redux';
@@ -24,6 +22,7 @@ const SignUpForm = () => {
   const [password,setPassword] = useState('');
   const [email,setEmail] = useState('');
   const [password2,setPassword2] = useState('');
+  const [profilePic,setProfilePic] = useState();
   const [loading,setLoading] = useState(false);
 
   const dispatch = useDispatch();
@@ -33,22 +32,29 @@ const SignUpForm = () => {
     e.preventDefault();
     setLoading(true);
 
-    if(password === password2 && password.length >= 6 && username && email){
+    if(password === password2 && password.length >= 6 && username && email && profilePic){
       try{
 
         const userCredential = await createUserWithEmailAndPassword(auth,email,password);
         const user = userCredential.user;
         console.log(user);
 
+        const profilePicRef = ref(storage,`user/${auth.currentUser.uid}/${Date.now()}`);
+        await uploadBytes(profilePicRef,profilePic);
+        const profilePicUrl = await getDownloadURL(profilePicRef);
+        console.log(profilePicUrl);
+
         await setDoc(doc(db,"users",user.uid),{
           name : username,
           email : user.email,
+          profilePic : profilePicUrl,
           uid : user.uid
         });
 
         dispatch(setUser({
           name : username,
           email : user.email,
+          profilePic : profilePicUrl,
           uid : user.uid
       }));
 
@@ -72,6 +78,10 @@ const SignUpForm = () => {
     
   }
 
+  function handleProfilePic(file){
+      setProfilePic(file);
+  }
+
   return (
     <>
         <form className="sign-up-form">
@@ -79,6 +89,7 @@ const SignUpForm = () => {
           <InputComponent type="email" placeholder="Email" state={email} setState={setEmail} required={true} />
           <InputComponent type="password" placeholder="Password" state={password} setState={setPassword} required={true} />
           <InputComponent type="password" placeholder="Confirm Password" state={password2} setState={setPassword2} required={true} />
+          <FileInput text="--Upload Profile Picture--" accept={"Image/*"} id="dp" fileHandleFunction={handleProfilePic}/>
           <div className='sign-up-btn'>
           <Button name={loading ? "Loading..." : "Sign Up"} onClick={handleSubmit} disabled = {loading}/>
           </div>          

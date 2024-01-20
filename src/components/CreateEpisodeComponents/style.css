@@ -1,0 +1,30 @@
+.create-episode-form{
+    width: 100%;
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
+.create-episode-btn{
+    width: 50%;
+  }
+
+.episode-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.episode-title{
+    color: var(--font);
+    font-size: 30px;
+    font-weight: 400;
+  }
+
+.episode-desc{
+    color: var(--grey-font);
+  }

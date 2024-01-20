@@ -1,0 +1,46 @@
+
+.custom-audio-player{
+    width: 100vw;
+    height: 10%;
+    bottom: 0px;
+    left: 0px;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0rem;
+    background: linear-gradient(178deg, rgba(58, 129, 191, 0.30) 1.63%, rgba(65, 48, 90, 0.01) 148.18%);
+    gap: 1rem;
+}
+
+.displayImage-container > img{
+    width:50px;
+    height:50px;
+    object-fit: cover;
+}
+
+.progress-bar{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.progress-bar>input{
+   width: 90%;
+   filter: hue-rotate(25deg);
+}
+
+.volume-bar{
+    width: 15%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.volume-bar>input{
+    width: 90%;
+    filter: hue-rotate(25deg);
+ }

@@ -1,18 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const intialState = {
-    episode : null
+    episodes : []
 }
 
 const episodeSlice = createSlice({
-    name : "episode",
+    name : "episodes",
     initialState : intialState,
     reducers : {
         setEpisode : (state, action) => {
-            state.episode = action.payload
+            state.episodes = action.payload
         },
         clearEpisode : (state) => {
-            state.episode = null
+            state.episodes = null
         }    
     }
 });
