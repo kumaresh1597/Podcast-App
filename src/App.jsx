@@ -15,6 +15,7 @@ import { setUser } from './slices/userSlice.js';
 import PrivateRoutes from './components/common/PrivateRoutes.jsx';
 import PodcastDetail from './pages/PodcastDetail.jsx';
 import CreateEpisode from './pages/CreateEpisode.jsx';
+import EditProfilePage from './pages/EditProfilePage.jsx';
 
 const App = () => {
 
@@ -63,7 +64,8 @@ const App = () => {
             <Route path="/createPodcast" element={<CreatePodcast/>} />
             <Route path="/profile" element={<Profile/>} />
             <Route path="/podcast/:id" element={<PodcastDetail/>} />
-            <Route path="/podcast/:id/createEpisode" element={<CreateEpisode/>}/>
+            <Route path="/podcast/:id/createEpisode" element={<CreateEpisode/>} />
+            <Route path="/profile/editProfile" element={<EditProfilePage/>} />
         </Route>      
       </Routes>
     </div>

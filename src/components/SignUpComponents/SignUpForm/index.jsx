@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import InputComponent from '../../common/Input';
+import InputComponent from '../../common/Input/InputComponent';
 import Button from '../../common/Button';
 import FileInput from '../../common/Input/FileInput';
 import "./style.css";
@@ -24,6 +24,7 @@ const SignUpForm = () => {
   const [password2,setPassword2] = useState('');
   const [profilePic,setProfilePic] = useState();
   const [loading,setLoading] = useState(false);
+
 
   const dispatch = useDispatch();
   const navigate = useNavigate();

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const FileInput = ({accept,id,text,fileHandleFunction}) => {
+const FileInput = ({accept,id,text,fileHandleFunction,style}) => {
 
     const [fileSelected, setFileSelected] = useState("");
 
@@ -17,7 +17,7 @@ const FileInput = ({accept,id,text,fileHandleFunction}) => {
      type="file" 
      id={id} 
      accept={accept}
-     style={{display:"none"}}
+     style={{display:'none'}}
      onChange={onChangeHandler}
     />
     </>

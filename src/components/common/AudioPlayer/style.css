@@ -32,12 +32,19 @@
    filter: hue-rotate(25deg);
 }
 
+.progress-bar>p{
+    color: var(--white);
+}
+
 .volume-bar{
     width: 15%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
+}
+.volume-bar>p{
+    color: var(--white);
 }
 
 .volume-bar>input{

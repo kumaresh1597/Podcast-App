@@ -1,6 +1,7 @@
 import React from 'react';
 import "./style.css";
 import { Edit } from 'react-feather';
+import { Link } from 'react-router-dom';
 
 const ProfileCard = ({item}) => {
     console.log(item);
@@ -11,7 +12,7 @@ const ProfileCard = ({item}) => {
         </div>
         <div className='profile-div2'>
           <p className='profile-title'>{item.name}</p>
-          <p><Edit /></p>
+          <p className='edit-icon'><Link to ={`/profile/editProfile`}><Edit color='white'/></Link></p>
         </div>  
     </div>
   )

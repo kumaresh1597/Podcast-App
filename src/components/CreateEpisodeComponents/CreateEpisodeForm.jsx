@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import InputComponent from '../common/Input'
+import InputComponent from '../common/Input/InputComponent';
 import Button from '../common/Button';
 import FileInput from '../common/Input/FileInput';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -10,6 +10,7 @@ import "./style.css";
 import { db,storage,auth } from '../../firebase';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { addDoc, collection } from 'firebase/firestore';
+import TextAreaInput from '../common/Input/TextAreaInput';
 
 
 const CreateEpisodeForm = () => {
@@ -70,7 +71,7 @@ const CreateEpisodeForm = () => {
   return (
     <form className='create-episode-form'>
         <InputComponent type="text" placeholder="Episode Title" state={title} setState={setTitle} required={true} />
-        <InputComponent type="text" placeholder="Episode Description" state={description} setState={setDescription} required={true} />
+        <TextAreaInput placeholder="Episode Description" state={description} setState={setDescription} required={true} />
         <FileInput text="Upload Audio file" accept={"Audio/*"} id="audio-file" fileHandleFunction={audioFileHandle}/>
         <div className='create-episode-btn'>
           <Button name={loading ? "Loading..." : "Create Episode"} onClick={handleSubmit} />

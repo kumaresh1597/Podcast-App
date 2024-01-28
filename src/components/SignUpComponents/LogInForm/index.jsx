@@ -1,16 +1,16 @@
 import React,{useState} from 'react'
-import InputComponent from '../../common/Input';
+import InputComponent from '../../common/Input/InputComponent';
 import Button from '../../common/Button';
 import "./style.css";
 
 import {db,auth} from "../../../firebase";
-import {signInWithEmailAndPassword } from "firebase/auth";
+import {signInWithEmailAndPassword,sendPasswordResetEmail} from "firebase/auth";
 
 import { getDoc,doc } from 'firebase/firestore';
 import { useDispatch } from 'react-redux';
 
 import { setUser } from '../../../slices/userSlice';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link} from 'react-router-dom';
 
 import {toast} from "react-toastify"
 
@@ -59,13 +59,37 @@ const LogInForm = () => {
         toast.error("Please fill all the fields");
         setLoading(false);
        }   
-    } 
+    }
+    
+    function handleResetPassword(){
+      setLoading(true);
+        if(username){
+            sendPasswordResetEmail(auth, username)
+         .then(() => {
+              // Password reset email sent!
+              //..
+              toast.error("Password reset link sent to your email");
+              setLoading(false); 
+              navigate("/");   
+            })
+         .catch((error) => {
+              const errorMessage = error.message;
+              toast.error(errorMessage);
+              setLoading(false);
+              //..
+            });
+        } else{
+          toast.error("Enter Email address");
+          setLoading(false);
+        }
+    }
 
   return (
     <>
      <form className="log-in-form">
-          <InputComponent type="text" placeholder="UserName" state={username} setState={setUsername} required={true} />
+          <InputComponent type="email" placeholder="Email" state={username} setState={setUsername} required={true} />
           <InputComponent type="password" placeholder="Password" state={password} setState={setPassword} required={true} />
+          <div style={{width:'100%'}}><Link onClick={handleResetPassword}>Forget password ?</Link></div>
           <div className='log-in-btn'>
           <Button name={loading ? "Loading..." : "Log In"} onClick={handleSubmit} disabled={loading}/>
           </div> 

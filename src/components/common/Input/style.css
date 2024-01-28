@@ -5,21 +5,28 @@
     border-radius: 0.25rem;
     border: 2px solid #FFFFFF80;
     padding: 0.75rem;
-    color: var(--white);
+    color: var(--font);
     font-size: 16px;
     font-weight: 400;
 }
 
 .custom-input::placeholder{
-    color: grey;
+    color: var(--grey-font);
 }
 
 .lable-input{
-    color: grey;
+    color: var(--grey-font);
 }
 
 .uploaded{
     color: var(--white);
     font-style: italic;
     border-color: var(--white);
+}
+
+.drop-down:focus{
+    background-color: var(--theme);
+    color: var(--font);
+    font-size: 16px;
+    font-weight: 400;
 }

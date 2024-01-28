@@ -88,17 +88,17 @@ const PodcastDetail = () => {
                 </div>
                 <p className='podcast-description'>{podcast.description}</p>
                 <h1 className='header-div'>Episodes</h1>
-                <ol className='episode-list'>
+                <ul className='episode-list'>
                     {
                         allEpisodes.length >0 ?(
-                            allEpisodes.map((episode)=>(
+                            allEpisodes.map((episode,index)=>(
                                 <li key={episode.id} >
-                                    <Episode episode={episode} onclick={(file)=>setPlayingAudio(file)}/> 
+                                    <Episode episode={episode} index={index} onclick={(file)=>setPlayingAudio(file)}/> 
                                 </li>
                             ))
                         ):(<p>No Episode found</p>)
                     }
-                </ol>     
+                </ul>     
             </>
         } 
         {

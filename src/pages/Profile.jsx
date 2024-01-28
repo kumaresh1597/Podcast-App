@@ -28,7 +28,7 @@ const Profile = () => {
         getUserDetails(id);
     }
 
-},[]);
+},[dispatch]);
 
 async function getUserDetails(id){
     try {
@@ -93,22 +93,27 @@ async function getUserDetails(id){
   }
 
   return (
-    <div>
-      <h1>Profile</h1>
-      <ProfileCard item={user}/>
-      {
-          podcasts.length > 0 ? (
-            <ul className='all-podcast'>
-              {
-                podcasts.map((podcast)=>(
-                  <PodcastCard key={podcast.id} item={podcast}/>
-                ))
-             }
-            </ul>
-            ):(
-              <h1 className='header-div'>No Podcast Found <Link to="/createPodcast"> Create Podcast</Link> </h1>
-            )
-            }
+    <div className='profile-page'>
+      <div className='my-profile'>
+        <h1 className='header-div'>Profile</h1>
+        <ProfileCard item={user}/>
+      </div>
+      <div className='your-podcast'>
+        <h1 className='header-div'>Your Podcast</h1>
+        {
+            podcasts.length > 0 ? (
+              <ul className='all-podcast'>
+                {
+                  podcasts.map((podcast)=>(
+                    <PodcastCard key={podcast.id} item={podcast}/>
+                  ))
+              }
+              </ul>
+              ):(
+                <h1 className='header-div'>No Podcast Found <Link to="/createPodcast"> Create Podcast</Link> </h1>
+              )
+              }
+      </div>
       <div className='logOut-btn'>
         <Button name="Log out" onClick={handleLogOut}/>
       </div>
