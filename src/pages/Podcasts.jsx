@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import InputComponent from '../components/common/Input/InputComponent';
 import PodcastCard from '../components/PodcastPageComponents/PodcastPage/PodcastCard';
 import DropDown from '../components/common/Input/DropDown';
+import NavBar from '../components/common/NavBar';
 
 const Podcasts = () => {
 
@@ -51,7 +52,9 @@ const Podcasts = () => {
   
 
   return (
-    <div className='podcast-page'>
+    <>
+      <NavBar/>
+        <div className='podcast-page'>
         <div style={{width:"100%",display:'flex', justifyContent:'center',alignItems:'center'}}>
         <h1 className='header-div'>Discover Podcasts</h1>
         </div>
@@ -76,7 +79,9 @@ const Podcasts = () => {
               searchByName ? <h1 className='header-div'>Podcasts Not Found</h1> : <h1 className='header-div'>No Podcast Found</h1>
             )
             }
-    </div>
+        </div>
+    </>
+    
   )
 }
 

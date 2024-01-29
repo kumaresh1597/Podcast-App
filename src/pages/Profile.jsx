@@ -11,6 +11,7 @@ import { toast } from 'react-toastify';
 import ProfileCard from '../components/Profile/ProfileCard/ProfileCard';
 import PodcastCard from '../components/PodcastPageComponents/PodcastPage/PodcastCard';
 import { setUser } from '../slices/userSlice';
+import NavBar from '../components/common/NavBar';
 
 const Profile = () => {
 
@@ -81,43 +82,34 @@ async function getUserDetails(id){
 
 
 
-
- function handleLogOut(){
-    signOut(auth)
-    .then(()=>{
-        toast.success("Logged out successfully");
-    })
-    .catch((error)=>{
-        toast.error(error.message);
-    });
-  }
-
   return (
-    <div className='profile-page'>
-      <div className='my-profile'>
-        <h1 className='header-div'>Profile</h1>
-        <ProfileCard item={user}/>
+    <>
+      <NavBar/>
+
+      <div className='profile-page'>
+        <div className='my-profile'>
+          <h1 className='header-div'>Profile</h1>
+          <ProfileCard item={user}/>
+        </div>
+        <div className='your-podcast'>
+          <h1 className='header-div'>Your Podcast</h1>
+          {
+              podcasts.length > 0 ? (
+                <ul className='all-podcast'>
+                  {
+                    podcasts.map((podcast)=>(
+                      <PodcastCard key={podcast.id} item={podcast}/>
+                    ))
+                }
+                </ul>
+                ):(
+                  <h1 className='content-text-div'>No Podcast Found <Link className='linkRef' to="/createPodcast"> Create Podcast</Link> </h1>
+                )
+                }
+        </div>
       </div>
-      <div className='your-podcast'>
-        <h1 className='header-div'>Your Podcast</h1>
-        {
-            podcasts.length > 0 ? (
-              <ul className='all-podcast'>
-                {
-                  podcasts.map((podcast)=>(
-                    <PodcastCard key={podcast.id} item={podcast}/>
-                  ))
-              }
-              </ul>
-              ):(
-                <h1 className='header-div'>No Podcast Found <Link to="/createPodcast"> Create Podcast</Link> </h1>
-              )
-              }
-      </div>
-      <div className='logOut-btn'>
-        <Button name="Log out" onClick={handleLogOut}/>
-      </div>
-    </div>
+
+    </>
   )
 }
 

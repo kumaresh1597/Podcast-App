@@ -9,6 +9,7 @@ import { collection, onSnapshot, query } from 'firebase/firestore'
 import { setEpisode } from '../slices/episodeSlice';
 import Episode from '../components/CreateEpisodeComponents/Episode';
 import AudioPlayer from '../components/common/AudioPlayer/AudioPlayer';
+import NavBar from '../components/common/NavBar';
 
 const PodcastDetail = () => {
 
@@ -72,6 +73,8 @@ const PodcastDetail = () => {
     console.log(playingAudio);
 
   return (
+    <>
+    <NavBar/>
     <div className='podcast-detail-page'>
         {
             podcast.id && <>
@@ -96,7 +99,7 @@ const PodcastDetail = () => {
                                     <Episode episode={episode} index={index} onclick={(file)=>setPlayingAudio(file)}/> 
                                 </li>
                             ))
-                        ):(<p>No Episode found</p>)
+                        ):(<p className='header-div'>No Episode found</p>)
                     }
                 </ul>     
             </>
@@ -105,6 +108,8 @@ const PodcastDetail = () => {
             playingAudio && <AudioPlayer audio={playingAudio} displayImg={podcast.smallImage}/>
         }     
     </div>
+    </>
+    
   )
 }
 

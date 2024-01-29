@@ -11,6 +11,7 @@ import InputComponent from '../components/common/Input/InputComponent';
 import FileInput from '../components/common/Input/FileInput';
 import Button from '../components/common/Button';
 import Loader from '../components/common/Loader';
+import NavBar from '../components/common/NavBar';
 
 const EditProfilePage = () => {
 
@@ -71,6 +72,8 @@ const EditProfilePage = () => {
 
 
   return (
+    <>
+    <NavBar/>
     <div className='edit-profile-page'>
         <div className='edit-page-wrapper'>
             <h1 className='header-div'>Edit Profile</h1>
@@ -90,6 +93,7 @@ const EditProfilePage = () => {
             </div>
         </div>
     </div>
+    </>
   )
 }
 

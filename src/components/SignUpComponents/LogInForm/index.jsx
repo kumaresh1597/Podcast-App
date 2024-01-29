@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState} from 'react';
 import InputComponent from '../../common/Input/InputComponent';
 import Button from '../../common/Button';
 import "./style.css";
@@ -12,7 +12,7 @@ import { useDispatch } from 'react-redux';
 import { setUser } from '../../../slices/userSlice';
 import { useNavigate,Link} from 'react-router-dom';
 
-import {toast} from "react-toastify"
+import {toast} from "react-toastify";
 
 const LogInForm = () => {
 

@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import InputComponent from '../../common/Input/InputComponent';
 import Button from '../../common/Button';
 import FileInput from '../../common/Input/FileInput';
@@ -28,6 +28,7 @@ const SignUpForm = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
 
   async function handleSubmit(e){
     e.preventDefault();
