@@ -1,3 +1,44 @@
+# Podcast App
+
+A simple podcast application allows users to discover, subscribe to, and listen to podcasts. This app provides a searchable directory of podcasts, allowing users to browse and discover podcasts based on genres or name and also allows users to play podcast episodes. Users can typically play, pause, fast forward, and rewind episodes.
+
+ - Sign-Up Page:
+    - New users can create an account by providing necessary information like username, email address,password and display picture.
+    - validation has been included
+
+ - Log-In Page:
+    - Existing users can log in by entering their username or email and password.
+    - There is an option for users to reset their password in case they forget it.
+
+- Profile Page: 
+    - After logging in, users land on the main profile page.
+    - User profile information is displayed.
+    - All podcast created by the particular user is displayed
+    - There is a option to edit the profile, where user can eith the name and display picture.
+
+- Podacst Page:
+    - This page displays a curated list of popular podcasts, categories, and a search bar for users to discover new podcasts.
+    - Each podcast is represented with its title, cover art, genre and artist.
+
+- Podcast Detail Page:
+   - Clicking on a podcast from the main page leads to the podcast detail page.
+   - This page shows more information about the selected podcast, including its episodes, description.
+   - Users can typically play, pause, fast forward, and rewind episodes here.
+     
+- Create Podcast Page:
+  - Users who want to create their own podcast can access this page.
+  - They provide information about their podcast, such as title, description, cover art, and category.
+
+- Create Episode Page:
+  - Podcast creators access this page to add a new episode to their podcast.
+  - They can input episode details, including title, description, release date, and upload the audio file.
+
+# Tech stack
+The platform is developed using React and integrated with Firebase, Redux Toolkit for state management, and Firebase for authentication, storage, and database features.
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
